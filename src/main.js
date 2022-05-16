@@ -1,6 +1,7 @@
 import FilterView from './view/list-filter-view.js';
 import ProfileView from './view/header-profile-view.js';
 import BoardPresenter from './presenter/presenter.js';
+import { generateMovieFish } from './fish_files/movie-fish.js';
 import { render } from './render.js';
 
 
@@ -12,3 +13,5 @@ render(new FilterView(), siteMainElement);
 render(new ProfileView(), siteHeaderElement);
 
 boardPresenter.init(siteMainElement);
+
+console.log(generateMovieFish())

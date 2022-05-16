@@ -1,6 +1,8 @@
 import { createElement } from '../render.js';
+import { humanizeDate } from '../utils.js';
 
-const filmCardViewTemplate = () => `<article class="film-card">
+const filmCardViewTemplate = () =>
+  `<article class="film-card">
 <a class="film-card__link">
   <h3 class="film-card__title">The Great Flamarion</h3>
   <p class="film-card__rating">8.9</p>
