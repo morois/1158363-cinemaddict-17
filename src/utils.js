@@ -28,8 +28,18 @@ const getRandomFloat = (min, max, afterPoint = 0) => {
   return +(Math.random() * (max - min) + min).toFixed(afterPoint);
 };
 
+const getRendomIndexArr = (array) => {
+  const randomIndex = getRandomInt(0, array.length - 1);
+  return array[randomIndex];
+};
+
+const getTimeFromMins = (mins) => {
+  const hours = Math.trunc(mins/60);
+  const minutes = mins % 60;
+  return `${hours  }h. ${  minutes  }m.`;
+};
 
 const humanizeDate = (date) => dayjs(date).format('D MMMM');
 
-export {getRandomInt, humanizeDate, getRandomFloat};
+export {getRandomInt, humanizeDate, getRandomFloat, getRendomIndexArr, getTimeFromMins};
 

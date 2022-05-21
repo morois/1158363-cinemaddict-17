@@ -3,16 +3,25 @@ import FilmCardView from '../view/film-card-view.js';
 import FilmContainerView from '../view/container-view.js';
 import ShowMoreView from '../view/show-more-view.js';
 import PopupFilmView from '../view/popup-film-view.js';
+import FilmsModel from '../model/movie-model.js';
+import CommentsModel from '../model/comment-model.js';
 
 export default class BoardPresenter {
-  boardComponent = new FilmContainerView();
+  filmComponent = new FilmContainerView();
 
-  init = (boardContainer) => {
-    this.boardContainer = boardContainer;
+  init = (filmContainer) => {
+    this.filmContainer = filmContainer;
 
-    render(this.boardComponent, this.boardContainer);
-    render(new FilmCardView(), this.boardComponent.getElement());
-    render(new PopupFilmView(), this.boardComponent.getElement());
-    render(new ShowMoreView(), this.boardComponent.getElement());
+    render(this.filmComponent, this.filmContainer);
+    render(new FilmCardView(), this.filmComponent.getElement());
+    render(new PopupFilmView(), this.filmComponent.getElement());
+    render(new ShowMoreView(), this.filmComponent.getElement());
+    render(new FilmsModel(), this.filmComponent.getElement());
+    render(new CommentsModel(), this.filmComponent.getElement());
+  };
+
+  renderFilmCard = (filmDetails) => {
+    const filmCard = new FilmCardView(filmDetails);
+    
   };
 }

@@ -1,7 +1,9 @@
-import { generateMovieFish } from '../fish_files/movie-fish.js';
+import { generateMovie } from '../mock/movies.js';
+
+const DATA_LENGTH = 5;
 
 export default class FilmsModel {
-    films = Array.from({length: 5}, generateMovieFish);
+  #films = Array.from({length: DATA_LENGTH}, generateMovie);
 
-    getFilms () => this.films;
+  get films () {return this.#films;}
 }
