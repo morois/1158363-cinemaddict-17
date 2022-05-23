@@ -5,23 +5,23 @@ const filmCardViewTemplate = (film) => {
 
   const {
     comments,
-    filmInfo: {
+    'film_info': {
       title,
-      totalRating,
+      rating,
       poster,
+      release: {
+        date,
+      },
+      runtime,
+      genre,
+      description
     },
-    release: {
-      date,
-    },
-    runtime,
-    genre,
-    description
   } = film;
 
   return (`<article class="film-card">
 <a class="film-card__link">
   <h3 class="film-card__title">${title}</h3>
-  <p class="film-card__rating">${totalRating}</p>
+  <p class="film-card__rating">${rating}</p>
   <p class="film-card__info">
     <span class="film-card__year">${humanizeDate(date, 'YYYY')}</span>
     <span class="film-card__duration">${getTimeFromMins(runtime)}</span>
@@ -48,7 +48,7 @@ export default class FilmCardView {
     this.film = film;
   }
 
-  get Template() {
+  getTemplate() {
     return filmCardViewTemplate(this.film);
   }
 
