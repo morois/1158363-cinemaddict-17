@@ -9,7 +9,6 @@ const siteMainElement = document.querySelector('.main');
 render(new FilterView(), siteMainElement);
 render(new ProfileView(), siteHeaderElement);
 
-if (window.location.pathname === '/') {
-  const boardPresenter = new BoardPresenter(siteMainElement);
-  boardPresenter.renderFilmCard();
-}
+const boardPresenter = new BoardPresenter(siteMainElement);
+boardPresenter.renderFilmCard();
+

@@ -1,4 +1,7 @@
-import { getRendomIndexArr } from '../utils.js';
+import { getRendomIndexArr, getRandomInt } from '../utils.js';
+
+const MIN_ID = 10;
+const MAX_ID = 99;
 
 const AUTHOR = [
   'Neo Acosta',
@@ -16,7 +19,7 @@ const COMMENTS = [
 const EMOTIONS = ['smile', 'sleeping', 'puke', 'angry'];
 
 export const generateComment = () => ({
-  'id': '42',
+  'id': getRandomInt(MIN_ID, MAX_ID),
   'author': getRendomIndexArr(AUTHOR),
   'comment': getRendomIndexArr(COMMENTS),
   'date': '2019-05-11T16:12:32.554Z',
