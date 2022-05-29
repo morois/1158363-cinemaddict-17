@@ -5,7 +5,7 @@ const popupTemplate = (filmDetails) => {
 
   const {
     comments,
-    filmInfo : {
+    'film_Info' : {
       title,
       alternativeTitle,
       totalRating,
@@ -100,22 +100,25 @@ const popupTemplate = (filmDetails) => {
 };
 
 export default class PopupFilmView {
+  #element = null;
+  #filmDetails = null;
+
   constructor (filmDetails) {
-    this.filmDetails = filmDetails;
+    this.#filmDetails = filmDetails;
   }
 
-  getTemplate() {
-    return popupTemplate(this.filmDetails);
+  get template() {
+    return popupTemplate(this.#filmDetails);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
     }
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }

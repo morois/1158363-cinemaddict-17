@@ -40,7 +40,7 @@ const POSTERS = [
 export const generateMovie = () => ({
   'id': '0',
   'comments': [
-    '$Comment.id$', '$Comment.id$'
+    11, 22, 33, 44, 55
   ],
   'film_info': {
     'title': getRendomIndexArr(TITLE),
