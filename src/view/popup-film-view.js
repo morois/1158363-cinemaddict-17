@@ -108,7 +108,7 @@ export default class PopupFilmView {
   }
 
   get template() {
-    return popupTemplate(this.#filmDetails);
+    return popupTemplate(this.#filmDetails  );
   }
 
   get element() {
