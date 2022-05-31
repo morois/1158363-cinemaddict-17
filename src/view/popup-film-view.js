@@ -5,10 +5,10 @@ const popupTemplate = (filmDetails) => {
 
   const {
     comments,
-    'film_Info' : {
+    'film_info' : {
       title,
       alternativeTitle,
-      totalRating,
+      rating,
       poster,
       ageRating,
       director,
@@ -45,7 +45,7 @@ const popupTemplate = (filmDetails) => {
           </div>
 
           <div class="film-details__rating">
-            <p class="film-details__total-rating">${totalRating}</p>
+            <p class="film-details__total-rating">${rating}</p>
           </div>
         </div>
 
