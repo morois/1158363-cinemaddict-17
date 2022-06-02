@@ -23,14 +23,15 @@ export default class FilmPresenter {
     this.#commentsModel = commentsModel;
     this.#filmCards = [...this.#filmModel.films];
 
-    for (const film of this.#filmModel.films) {
+    this.#filmCards.forEach((film) => {
       const filmCard = new FilmCardView(film);
       render(filmCard, this.#filmComponent.element);
 
       filmCard.element.addEventListener('click', () => {
         this.#renderPopup(film);
       });
-    }
+    });
+
     render(this.#filmComponent, this.#filmContainer);
     render(this.#showMoreButton, this.#filmContainer);
   };
@@ -66,11 +67,10 @@ export default class FilmPresenter {
   };
 
   #getComments = (template) => {
-    for (const comment of this.#commentsModel.comments) {
+    this.#commentsModel.comments.forEach((comment) => {
       const commentCard = new CommentView(comment);
       render(commentCard, template.element);
-    }
-
+    });
   };
 }
 
