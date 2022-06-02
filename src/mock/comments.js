@@ -16,7 +16,12 @@ const COMMENTS = [
   'Not a lot of script, but the nicely shot visuals tell much of the story anyhow.'
 ];
 
-const EMOTIONS = ['smile', 'sleeping', 'puke', 'angry'];
+const EMOTIONS = [
+  './images/emoji/smile.png',
+  './images/emoji/angry.png',
+  './images/emoji/puke.png',
+  './images/emoji/sleeping.png',
+];
 
 export const generateComment = () => ({
   'id': getRandomInt(MIN_ID, MAX_ID),
