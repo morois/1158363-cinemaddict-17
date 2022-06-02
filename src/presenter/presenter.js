@@ -7,6 +7,8 @@ import PopupFilmView from '../view/popup-film-view.js';
 import CommentsModel from '../model/comment-model.js';
 import CommentView from '../view/comment-film-view.js';
 
+const FILM_COUNTS = 5;
+
 export default class FilmPresenter {
   #filmModel = new FilmsModel();
   #filmComponent = new FilmContainerView();
@@ -16,6 +18,7 @@ export default class FilmPresenter {
   #filmContainer;
   #filmCards = [];
   #filmComments = [];
+  #renderFilmCount = FILM_COUNTS;
 
   init = (filmContainer, filmModel, commentsModel) => {
     this.#filmContainer = filmContainer;
@@ -23,16 +26,22 @@ export default class FilmPresenter {
     this.#commentsModel = commentsModel;
     this.#filmCards = [...this.#filmModel.films];
 
-    for (const film of this.#filmModel.films) {
+    this.#filmCards.forEach((film) => {
       const filmCard = new FilmCardView(film);
       render(filmCard, this.#filmComponent.element);
 
       filmCard.element.addEventListener('click', () => {
         this.#renderPopup(film);
       });
-    }
+    });
+
     render(this.#filmComponent, this.#filmContainer);
-    render(this.#showMoreButton, this.#filmContainer);
+
+    if(this.#filmCards.length > FILM_COUNTS) {
+      render(this.#showMoreButton, this.#filmContainer);
+
+      this.#showMoreButton.element.addEventListener('click', this.#handleShowMoreButtonClick);
+    }
   };
 
   #renderPopup = (filmInfo) => {
@@ -66,11 +75,16 @@ export default class FilmPresenter {
   };
 
   #getComments = (template) => {
-    for (const comment of this.#commentsModel.comments) {
+    this.#commentsModel.comments.forEach((comment) => {
       const commentCard = new CommentView(comment);
       render(commentCard, template.element);
-    }
-
+    });
   };
+
+  #handleShowMoreButtonClick = (evt) => {
+    evt.preventDefault();
+    console.log('Good');
+  }
 }
+
 
