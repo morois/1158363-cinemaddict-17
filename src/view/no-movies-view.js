@@ -1,13 +1,13 @@
 import { createElement } from '../render.js';
 
-const createFilmContainerTemplate = () => '<section class="films"></section>';
+const createNoMoviesTemplate = () => (`
+<section class="films-list">
+  <h2 class="films-list__title">There are no movies in our database</h2>
+</section>`
+);
 
-export default class FilmContainerView {
+export default class NoFilmView {
   #element = null;
-
-  get template () {
-    return createFilmContainerTemplate();
-  }
 
   get element() {
     if (!this.#element) {
@@ -15,6 +15,10 @@ export default class FilmContainerView {
     }
 
     return this.#element;
+  }
+
+  get template() {
+    return createNoMoviesTemplate();
   }
 
   removeElement() {
