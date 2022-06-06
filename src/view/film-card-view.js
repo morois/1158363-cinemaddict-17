@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import { humanizeDate, getTimeFromMins } from '../utils.js';
+import { humanizeDate, getTimeFromMins } from '../utils/film-utils.js';
 
 const filmCardViewTemplate = (film) => {
 
@@ -53,3 +53,4 @@ export default class FilmCardView extends AbstractView {
   }
 
 }
+

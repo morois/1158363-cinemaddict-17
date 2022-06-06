@@ -1,5 +1,5 @@
 import AbstractView from '../framework/view/abstract-view.js';
-import { getTimeFromMins, humanizeDate } from '../utils.js';
+import { getTimeFromMins, humanizeDate } from '../utils/film-utils.js';
 
 const popupTemplate = (filmDetails) => {
 
@@ -110,5 +110,4 @@ export default class PopupFilmView extends AbstractView {
   get template() {
     return popupTemplate(this.#filmDetails  );
   }
-
 }

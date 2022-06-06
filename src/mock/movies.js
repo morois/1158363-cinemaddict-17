@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { getRandomInt, getRandomFloat, getRendomIndexArr } from '../utils.js';
+import { getRandomInt, getRandomFloat, getRendomIndexArr } from '../utils/common-utils.js';
 
 const MIN_RATING = 1;
 const MAX_RATING = 10;

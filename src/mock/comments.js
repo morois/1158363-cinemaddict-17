@@ -1,4 +1,4 @@
-import { getRendomIndexArr, getRandomInt } from '../utils.js';
+import { getRendomIndexArr, getRandomInt } from '../utils/common-utils.js';
 
 const MIN_ID = 10;
 const MAX_ID = 99;
