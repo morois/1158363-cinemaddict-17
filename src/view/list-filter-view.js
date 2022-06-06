@@ -1,5 +1,4 @@
-import { createElement } from '../render.js';
-
+import AbstractView from '../framework/view/abstract-view.js';
 
 const createListFilterTemplate  = () => `<main class="main">
 <nav class="main-navigation">
@@ -9,21 +8,10 @@ const createListFilterTemplate  = () => `<main class="main">
   <a href="#favorites" class="main-navigation__item">Favorites <span class="main-navigation__item-count">8</span></a>
 </nav>`;
 
-export default class FilterView {
-  #element = null;
+export default class FilterView extends AbstractView{
 
   get template() {
     return createListFilterTemplate();
   }
 
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
-  }
 }

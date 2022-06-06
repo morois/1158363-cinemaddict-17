@@ -1,5 +1,4 @@
-import { createElement } from '../render.js';
-
+import AbstractView from '../framework/view/abstract-view.js';
 
 const commentsTemplate = (dataComments) => {
 
@@ -27,27 +26,16 @@ const commentsTemplate = (dataComments) => {
 `);
 };
 
-export default class CommentView {
-  #element = null;
+export default class CommentView extends AbstractView {
   #comment = {};
 
   constructor(comment) {
+    super();
     this.#comment = comment;
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-
-    return this.#element;
   }
 
   get template() {
     return commentsTemplate(this.#comment);
   }
 
-  removeElement() {
-    this.#element = null;
-  }
 }

@@ -1,4 +1,4 @@
-import { render } from '../render.js';
+import {render} from '../framework/render.js';
 import FilmCardView from '../view/film-card-view.js';
 import FilmContainerView from '../view/container-view.js';
 import FilmsModel from '../model/movie-model.js';
