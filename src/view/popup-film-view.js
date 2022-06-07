@@ -1,5 +1,5 @@
-import { createElement } from '../render.js';
-import { getTimeFromMins, humanizeDate } from '../utils.js';
+import AbstractView from '../framework/view/abstract-view.js';
+import { getTimeFromMins, humanizeDate } from '../utils/film-utils.js';
 
 const popupTemplate = (filmDetails) => {
 
@@ -99,26 +99,15 @@ const popupTemplate = (filmDetails) => {
   );
 };
 
-export default class PopupFilmView {
-  #element = null;
+export default class PopupFilmView extends AbstractView {
   #filmDetails = null;
 
   constructor (filmDetails) {
+    super();
     this.#filmDetails = filmDetails;
   }
 
   get template() {
     return popupTemplate(this.#filmDetails  );
-  }
-
-  get element() {
-    if (!this.#element) {
-      this.#element = createElement(this.template);
-    }
-    return this.#element;
-  }
-
-  removeElement() {
-    this.#element = null;
   }
 }

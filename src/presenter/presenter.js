@@ -1,4 +1,4 @@
-import { render } from '../render.js';
+import {render} from '../framework/render.js';
 import FilmCardView from '../view/film-card-view.js';
 import FilmContainerView from '../view/container-view.js';
 import FilmsModel from '../model/movie-model.js';
@@ -96,8 +96,7 @@ export default class FilmPresenter {
     });
   };
 
-  #handleShowMoreButtonClick = (evt) => {
-    evt.preventDefault();
+  #handleShowMoreButtonClick = () => {
     this.#filmCards
       .slice(this.#renderFilmCount, this.#renderFilmCount + FILM_COUNTS)
       .forEach((film) => this.#renderFilm(film, this.#filmComponent.element));

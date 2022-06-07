@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -33,13 +31,4 @@ const getRendomIndexArr = (array) => {
   return array[randomIndex];
 };
 
-const getTimeFromMins = (mins) => {
-  const hours = Math.trunc(mins/60);
-  const minutes = mins % 60;
-  return `${hours  }h. ${  minutes  }m.`;
-};
-
-const humanizeDate = (date) => dayjs(date).format('D MMMM');
-
-export {getRandomInt, humanizeDate, getRandomFloat, getRendomIndexArr, getTimeFromMins};
-
+export {getRandomInt, getRendomIndexArr, getRandomFloat};
