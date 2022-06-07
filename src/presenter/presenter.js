@@ -7,6 +7,7 @@ import PopupFilmView from '../view/popup-film-view.js';
 import CommentsModel from '../model/comment-model.js';
 import CommentView from '../view/comment-film-view.js';
 import NoFilmView from '../view/no-movies-view.js';
+import SortView from '../view/sort-view.js';
 
 const FILM_COUNTS = 5;
 
@@ -22,6 +23,7 @@ export default class FilmPresenter {
   #renderFilmCount = FILM_COUNTS;
   #NoFilms = new NoFilmView();
   #emptyContainer = new FilmContainerView();
+  #sortView = new SortView();
 
   init = (filmContainer, filmModel, commentsModel) => {
     this.#filmContainer = filmContainer;
@@ -29,7 +31,9 @@ export default class FilmPresenter {
     this.#commentsModel = commentsModel;
     this.#filmCards = [...this.#filmModel.films];
 
+    render(this.#sortView, this.#filmContainer);
     render(this.#filmComponent, this.#filmContainer);
+
     this.#renderCardsFilms();
 
     if(this.#filmCards.length > FILM_COUNTS) {

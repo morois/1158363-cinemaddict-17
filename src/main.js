@@ -5,7 +5,6 @@ import ProfileView from './view/header-profile-view.js';
 import FilmsModel from './model/movie-model.js';
 import CommentsModel from './model/comment-model.js';
 
-
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
 const filmModel = new FilmsModel();

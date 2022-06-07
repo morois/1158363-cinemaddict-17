@@ -64,10 +64,10 @@ export const generateMovie = () => ({
     'description': getRendomIndexArr(DESCRIPTION),
   },
   'user_details': {
-    'watchlist': false,
-    'already_watched': true,
+    'watchlist': getRandomInt(0, 1),
+    'already_watched': getRandomInt(0, 1),
     'watching_date': '2019-04-12T16:12:32.554Z',
-    'favorite': false
+    'favorite': getRandomInt(0, 1)
   }
 });
 
