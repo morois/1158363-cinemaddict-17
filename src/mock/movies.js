@@ -70,4 +70,3 @@ export const generateMovie = () => ({
     'favorite': getRandomInt(0, 1)
   }
 });
-
