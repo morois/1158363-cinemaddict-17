@@ -108,6 +108,30 @@ export default class PopupFilmView extends AbstractView {
   }
 
   get template() {
-    return popupTemplate(this.#filmDetails  );
+    return popupTemplate(this.#filmDetails);
   }
+
+  setCloseElementClickHandler = (callback) => {
+    this._callback.clickCloseElement = callback;
+
+    this.element.querySelector('.film-details__close-btn').addEventListener('click', this.#clickCloseElementHandler);
+  };
+
+  #clickCloseElementHandler = (e) => {
+    e.preventDefault();
+    this._callback.clickCloseElement();
+  };
+
+  getFilmDetailsBottomContainer() {
+    return this.element.querySelector('.film-details__bottom-container');
+  }
+
+  getFilmDetailsNewComment() {
+    return this.element.querySelector('.film-details__new-comment');
+  }
+
+  getFilmDetailsCommentsList() {
+    return this.element.querySelector('.film-details__comments-list');
+  }
+
 }

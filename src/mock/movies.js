@@ -1,72 +1,99 @@
 import dayjs from 'dayjs';
-import { getRandomInt, getRandomFloat, getRendomIndexArr } from '../utils/common-utils.js';
+import { getRandomInt } from '../utils/common-utils.js';
 
-const MIN_RATING = 1;
-const MAX_RATING = 10;
+const generateTitle = () => {
+  const titles = [
+    'Santa Claus Conquers the Martians',
+    'Sagebrush Trail',
+    'The Man with the Golden Arm',
+    'Popeye the Sailor Meets Sindbad the Sailor',
+    'The Dance of Life',
+  ];
+  const randomIndex = getRandomInt(0, titles.length - 1);
 
-const MIN_RUNTIME = 100;
-const MAX_RUNTIME = 200;
+  return titles[randomIndex];
+};
 
-const RELEASE = ['1984', '1990', '2008', '2000', '1964'];
-const GENRE = ['Drama', 'Thriller', 'Horror', 'Comedy', 'Adventure'];
-const AGE_RATING = ['18+', '16+', '6+', '0+'];
+const generateGenre = () => {
+  const genres = [
+    'Comedy',
+    'Western',
+    'Drama',
+    'Cartoon',
+    'Musical',
+  ];
+  const randomIndex = getRandomInt(0, genres.length - 1);
 
-const TITLE =  [
-  'The Shawshank Redemption',
-  'The Godfather',
-  'The Dark Knight',
-  'The Lord of the Rings: The Return of the King',
-  'Schindler`s List',
-];
+  return genres[randomIndex];
+};
 
-const DESCRIPTION = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  'Cras aliquet varius magna, non porta ligula feugiat eget.',
-  'Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra. Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.',
-  'Nunc fermentum tortor ac porta dapibus.',
-  'In rutrum ac purus sit amet tempus.',
-];
+const generateDuration = () => {
+  const randomHour = getRandomInt(0, 5);
+  const randomMin = getRandomInt(0, 59);
 
-const POSTERS = [
-  'the-dance-of-life.jpg',
-  'sagebrush-trail.jpg',
-  'the-man-with-the-golden-arm.jpg',
-  'santa-claus-conquers-the-martians.jpg',
-  'popeye-meets-sinbad.png',
-  'made-for-each-other.png',
-  'the-great-flamarion.jpg',
-];
+  const hour = randomHour > 0 ? `${randomHour}h ` : '';
+  const min = randomMin > 0 ? `${randomMin}min` : '1min';
 
-export const generateMovie = () => ({
-  'id': '0',
-  'comments': [
-    11, 22, 33, 44, 55
-  ],
-  'film_info': {
-    'title': getRendomIndexArr(TITLE),
-    'alternativeTitle': '',
-    'rating': getRandomFloat(MIN_RATING, MAX_RATING, 1),
-    'poster': `images/posters/${getRendomIndexArr(POSTERS)}`,
-    'ageRating': getRendomIndexArr(AGE_RATING),
-    'director': 'Tom Ford',
-    'writers': [
-      'Takeshi Kitano'
-    ],
-    'actors': [
-      'Morgan Freeman'
-    ],
-    'release': {
-      'date': dayjs(getRendomIndexArr(RELEASE)).format('YYYY-MM-DD'),
-      'release_country': 'Finland'
-    },
-    'runtime': getRandomInt(MIN_RUNTIME, MAX_RUNTIME),
-    'genre': getRendomIndexArr(GENRE),
-    'description': getRendomIndexArr(DESCRIPTION),
-  },
-  'user_details': {
-    'watchlist': getRandomInt(0, 1),
-    'already_watched': getRandomInt(0, 1),
-    'watching_date': '2019-04-12T16:12:32.554Z',
-    'favorite': getRandomInt(0, 1)
-  }
-});
+  return `${hour}${min}`;
+};
+
+const generateImgSrc = () => {
+  const srcs = [
+    './images/posters/santa-claus-conquers-the-martians.jpg',
+    './images/posters/sagebrush-trail.jpg',
+    './images/posters/the-man-with-the-golden-arm.jpg',
+    './images/posters/popeye-meets-sinbad.png',
+    './images/posters/the-dance-of-life.jpg',
+  ];
+  const randomIndex = getRandomInt(0, srcs.length - 1);
+
+  return srcs[randomIndex];
+};
+
+const generateDescription = () => {
+  const descriptions = [
+    'The Martians Momar ("Mom Martian") and Kimar ("King Martian") are worried that their children Girmar ("Girl Martian") and Bomar ("Boy Marti…',
+    'Sentenced for a murder he did not commit, John Brant escapes from prison determined to find the real killer. By chance Brant\'s narrow escap…',
+    'Frankie Machine (Frank Sinatra) is released from the federal Narcotic Farm in Lexington, Kentucky with a set of drums and a new outlook on…',
+    'In this short, Sindbad the Sailor (presumably Bluto playing a "role") proclaims himself, in song, to be the greatest sailor, adventurer and…',
+    'Burlesque comic Ralph "Skid" Johnson (Skelly), and specialty dancer Bonny Lee King (Carroll), end up together on a cold, rainy night at a tr…',
+  ];
+
+  const randomIndex = getRandomInt(0, descriptions.length - 1);
+
+  return descriptions[randomIndex];
+};
+
+const generateDetails = () => {
+  const daysGap = getRandomInt(-60, 0);
+
+  return {
+    'watchlist': Boolean(getRandomInt(0, 1)),
+    'already_watched': Boolean(getRandomInt(0, 1)),
+    'watching_date': dayjs().add(daysGap, 'day').toDate(),
+    'favorite': Boolean(getRandomInt(0, 1)),
+  };
+};
+
+
+let filmId = 1;
+
+export const generateMovie = () => {
+  const id = filmId++;
+  return {
+    'id': id,
+    'title': generateTitle(),
+    'description': generateDescription(),
+    'rating': getRandomInt(1, 5) + getRandomInt(1, 5) / 10,
+    'year': getRandomInt(1950, 2022),
+    'duration': generateDuration(),
+    'genre': generateGenre(),
+    'genreOriginal': `${generateGenre()} original`,
+    'сountry': 'USA',
+    'director': 'Anthony Mann',
+    'writers': 'Anne Wigton, Heinz Herald, Richard Weil',
+    'actors': 'Erich von Stroheim, Mary Beth Hughes, Dan Duryea',
+    'imgSrc': generateImgSrc(),
+    'userDetails': generateDetails(),
+  };
+};
